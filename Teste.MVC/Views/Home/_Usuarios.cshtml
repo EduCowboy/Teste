@@ -1,0 +1,30 @@
+﻿@model List<Teste.Application.ViewModel.Response.UsuariosViewModel>
+@if (Model != null)
+{
+    if (Model.Any())
+    {
+        for (int i = 0; i < Model.Count; i++)
+        {
+            <tr>
+                <td>@Model[i].NomeCompleto</td>
+                <td>@Model[i].Email</td>
+                <td>@Model[i].Telefone</td>
+                <td>
+                    <button type="submit" value="Alterar" data-toggle="tooltip" title="Alterar" onclick="modalAlterarUsuario('@Model[i].IdUsuario')">
+                        <span class="glyphicon glyphicon-pencil"></span>
+                    </button>
+                    <button type="submit" value="Excluir" data-toggle="tooltip" title="Excluir" onclick="modalExcluirUsuario('@Model[i].IdUsuario')">
+                        <span class="glyphicon glyphicon-remove"></span>
+                    </button>
+                </td>
+            </tr>
+        }
+    }
+    else
+    {
+        <tr>
+            <td colspan="7"><label>Nenhum registro encontrado</label> </td>
+        </tr>
+
+    }
+}
